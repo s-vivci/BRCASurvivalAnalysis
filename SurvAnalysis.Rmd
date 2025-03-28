@@ -1,0 +1,28 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(survival)
+library(survminer)
+library(dplyr)
+library(tidyverse)
+library(readr)
+```
+
+```{r}
+df<-readr::read_tsv("brca_metabric_clinical_data.tsv")
+```
+```{r}
+colnames(df)
+head(df,5)
+```
+
+```{r}
+#i want binary outcomes event variable
+df$event <- as.numeric(substr(df$Overall.Survival.Status,1,1))
+
+head(df,5)
+```
+
